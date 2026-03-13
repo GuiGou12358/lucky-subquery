@@ -18,6 +18,8 @@ import {Codec} from '@polkadot/types-codec/types';
 
 const DAPPSTAKING_CONTRACT_ID = process.env.DAPPSTAKING_CONTRACT_ID as string;
 
+console.log("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
+
 async function getPalletInfo(): Promise<PalletInfo> {
     let palletInfo = await PalletInfo.get('0');
     if (palletInfo) {
