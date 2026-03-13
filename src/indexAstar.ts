@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
+import {config} from "dotenv";
 
 // Astar
 const network = process.env.NETWORK || "astar";
-dotenv.config({
+config({
     path: `.env.${network}`
 });
 

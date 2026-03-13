@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
+import {config} from "dotenv";
 
 // Shibuya
 const network = process.env.NETWORK || "shibuya";
-dotenv.config({
+config({
     path: `.env.${network}`
 });
 

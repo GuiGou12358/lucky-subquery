@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
+import {config} from "dotenv";
 
 // Shiden
 const network = process.env.NETWORK || "shiden";
-dotenv.config({
+config({
     path: `.env.${network}`
 });
 
