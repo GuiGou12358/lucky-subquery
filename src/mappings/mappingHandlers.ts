@@ -17,8 +17,7 @@ import {SubstrateEvent} from "@subql/types";
 import {Codec} from '@polkadot/types-codec/types';
 
 const DAPPSTAKING_CONTRACT_ID = process.env.DAPPSTAKING_CONTRACT_ID as string;
-
-console.log("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
+logger.info("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
 
 async function getPalletInfo(): Promise<PalletInfo> {
     let palletInfo = await PalletInfo.get('0');
@@ -64,6 +63,8 @@ export async function handleStake(event: SubstrateEvent): Promise<void> {
     } = event;
 
     await logger.info("---------- DAppStaking - Stake --------- ");
+
+    await logger.info("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
     if (!smartContract.toString().includes(DAPPSTAKING_CONTRACT_ID)) {
         await logger.info("Other contract :" + smartContract.toString());
         return;
