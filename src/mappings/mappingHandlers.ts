@@ -19,6 +19,33 @@ import {Codec} from '@polkadot/types-codec/types';
 const DAPPSTAKING_CONTRACT_ID = process.env.DAPPSTAKING_CONTRACT_ID as string;
 logger.info("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
 
+
+async function isOurContract(contract: string): Promise<boolean> {
+    if (contract.includes(DAPPSTAKING_CONTRACT_ID)) {
+        await logger.info("Our contract :" + contract);
+        return true;
+    }
+    // astar
+    if (contract.includes("ZSV1GVepvmWFdshMWgczS4zYvmmwEsBjWQjN4WDpUEFRRPy")) {
+        await logger.info("Our contract :" + contract);
+        return true;
+    }
+    // shiden
+    if (contract.includes("X6ykUS6L6CH4EoZitZsYJsCxH2AGk2ky9G6a2xeu1W9ffTP")) {
+        await logger.info("Our contract :" + contract);
+        return true;
+    }
+    // shibuya
+    if (contract.includes("Xz3sHvmRgRY3mt3qQ3SjZ3aUPQTfHkj4rKeoQM6VJrenD3W")) {
+        await logger.info("Our contract :" + contract);
+        return true;
+    }
+
+    return false;
+
+}
+
+
 async function getPalletInfo(): Promise<PalletInfo> {
     let palletInfo = await PalletInfo.get('0');
     if (palletInfo) {
@@ -64,8 +91,7 @@ export async function handleStake(event: SubstrateEvent): Promise<void> {
 
     await logger.info("---------- DAppStaking - Stake --------- ");
 
-    await logger.info("DAPPSTAKING_CONTRACT_ID : " + DAPPSTAKING_CONTRACT_ID);
-    if (!smartContract.toString().includes(DAPPSTAKING_CONTRACT_ID)) {
+    if (!await isOurContract(smartContract.toString())) {
         await logger.info("Other contract :" + smartContract.toString());
         return;
     }
@@ -101,7 +127,7 @@ export async function handleUnstake(event: SubstrateEvent): Promise<void> {
     } = event;
 
     await logger.info("---------- DSppStaking - Unstake --------- ");
-    if (!smartContract.toString().includes(DAPPSTAKING_CONTRACT_ID)) {
+    if (!await isOurContract(smartContract.toString())) {
         await logger.info("Other contract :" + smartContract.toString());
         return;
     }
@@ -136,7 +162,7 @@ export async function handleDAppReward(event: SubstrateEvent): Promise<void> {
     } = event;
     await logger.info("---------- DAppStaking - DApp Reward --------- ");
 
-    if (!smartContract.toString().includes(DAPPSTAKING_CONTRACT_ID)) {
+    if (!await isOurContract(smartContract.toString())) {
         await logger.info("Other smartContract :" + smartContract.toString());
         return;
     }
