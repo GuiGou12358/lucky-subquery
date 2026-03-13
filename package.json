@@ -4,12 +4,12 @@
   "description": "A basic Substrate WASM example project with an event and call handler. Read more about this at https://academy.subquery.network/build/substrate-wasm.html. This project can be use as a starting point for developing your SubQuery project",
   "main": "dist/index.js",
   "scripts": {
-    "codegen-shibuya": "subql codegen -f project-shibuya.ts",
-    "build-shibuya": "subql build -f project-shibuya.ts",
-    "codegen-shiden": "subql codegen -f project-shiden.ts",
-    "build-shiden": "subql build -f project-shiden.ts",
-    "codegen-astar": "subql codegen -f project-astar.ts",
-    "build-astar": "subql build -f project-astar.ts",
+    "codegen-shibuya": "subql codegen project-shibuya.ts",
+    "build-shibuya": "subql build project-shibuya.ts",
+    "codegen-shiden": "subql codegen project-shiden.ts",
+    "build-shiden": "subql build project-shiden.ts",
+    "codegen-astar": "subql codegen project-astar.ts",
+    "build-astar": "subql build project-astar.ts",
     "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
     "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
     "prepack": "rm -rf dist && npm run build",
@@ -30,12 +30,12 @@
     "ipfs-unixfs": "6.0.6"
   },
   "devDependencies": {
-    "@polkadot/api": "~12.3.1",
-    "@subql/cli": "~5.1.1",
-    "@subql/node": "~5.1.0",
-    "@subql/testing": "~2.2.1",
-    "@subql/types": "~3.10.0",
-    "@subql/substrate-wasm-processor": "~1.0.0",
+    "@polkadot/api": "^10",
+    "@subql/cli": "latest",
+    "@subql/node": "latest",
+    "@subql/testing": "latest",
+    "@subql/types": "latest",
+    "@subql/substrate-wasm-processor": "^1.0.0",
     "typescript": "~5.5.4"
   },
   "exports": {
