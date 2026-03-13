@@ -43,5 +43,8 @@
     "indexShibuya": "src/indexShibuya.ts",
     "indexShiden": "src/indexShiden.ts",
     "indexAstar": "src/indexAstar.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
   }
 }

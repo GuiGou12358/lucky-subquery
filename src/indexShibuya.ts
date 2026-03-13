@@ -1,5 +1,10 @@
+import dotenv from "dotenv";
 
-// SHIBUYA
-process.env.DAPPSTAKING_CONTRACT_ID = "Xz3sHvmRgRY3mt3qQ3SjZ3aUPQTfHkj4rKeoQM6VJrenD3W";
+// Shibuya
+const network = process.env.NETWORK || "shibuya";
+dotenv.config({
+    path: `.env.${network}`
+});
+
 
 export * from "./index";

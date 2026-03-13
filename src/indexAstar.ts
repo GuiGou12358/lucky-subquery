@@ -1,5 +1,9 @@
+import dotenv from "dotenv";
 
-// ASTAR
-process.env.DAPPSTAKING_CONTRACT_ID = "ZSV1GVepvmWFdshMWgczS4zYvmmwEsBjWQjN4WDpUEFRRPy";
+// Astar
+const network = process.env.NETWORK || "astar";
+dotenv.config({
+    path: `.env.${network}`
+});
 
 export * from "./index";
